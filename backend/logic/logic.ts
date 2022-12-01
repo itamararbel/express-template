@@ -13,7 +13,11 @@ const getById = async(id:number):Promise<someModal>=>{
 
 const addNewSomeThing = async(newSomeThing:someModal):Promise<someModal>=>{
     const sql = `unsert into someTable VALUES (default,)`
+    try {
     const result:okPacket = await dal.execute(sql);
+    }catch{
+        console.log("sql is not good enough"+sql);
+    }
     newSomeThing.id = result.
     return newSomeThing;
 }
